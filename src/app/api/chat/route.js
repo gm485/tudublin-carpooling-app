@@ -1,5 +1,5 @@
 import connectDb from '../../../lib/connectDb';
-import Pool from '../../../models/Pool';
+import Pool from '../../../models/Carpool';
 
 export async function POST(req) {
     try {

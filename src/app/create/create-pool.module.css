@@ -1,0 +1,28 @@
+
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #f3f3f3f3;
+}
+.heading {
+    color: green;
+}
+
+.formHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+
+.createPoolForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    min-width: 400px;
+    max-width: 400px;
+}

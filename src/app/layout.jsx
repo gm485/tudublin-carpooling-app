@@ -1,9 +1,12 @@
+
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
 import Link from "next/link";
 import Script from "next/script";
 import Image from "next/image";
 import logo from "../images/carpool_logo.png";
+import GoogleMapsProviderWrapper from "@/components/GoogleMapsProviderWrapper";
+import CustomSignUpButton from "@/components/CustomSignUp";
 
 
 export const metadata = {
@@ -21,6 +24,7 @@ export default function RootLayout({children}){
 
 
       <body>
+        <GoogleMapsProviderWrapper>
         <header>
           <nav>
             <Image src={logo} id="logo" alt="logo" width={100} height={80}/>
@@ -29,7 +33,7 @@ export default function RootLayout({children}){
             <Link className="nav-link" href="/create">Create |</Link>
             <Link className="nav-link" href="/profile">Profile |</Link>
             <Link className="nav-link" href="/chat">Chat |</Link>
-            <Link className="nav-link" href="/signup">Sign Up |</Link>
+            <CustomSignUpButton />
           </nav>
         </header>
 
@@ -40,7 +44,7 @@ export default function RootLayout({children}){
         <footer>
           <p>Copyright - 2025 TU Dublin Carpooling</p>
         </footer>
-
+        </GoogleMapsProviderWrapper>
       </body>
     </html>
   );
