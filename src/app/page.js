@@ -1,66 +1,60 @@
-import Image from "next/image";
 import styles from "./page.module.css";
+import { connectToDatabase } from "./lib/mongoose";
+import Carpool from "../models/Carpool";
+import CarpoolMap from "./components/CarpoolMap";
 
-export default function Home() {
+export default async function Home() {
+  
+  let dbStatus = "not connected"
+
+  //connect to database
+  try {
+    await connectToDatabase();
+    dbStatus = "connected"
+  } catch (err) {
+    dbStatus = "error connecting to database"
+    console.error(err)
+  }
+
+
+   const carpools = await Carpool.find({}).lean()
+   if (carpools.length === 0){
+    await Carpool.create({
+      origin: "Dublin",
+      destination: "Galway",
+      date: new Date(),
+      seatsAvailable: 3,
+    })
+   }
+
+  function renderCarpools() {
+    return carpools.map((carpool) => (
+      <div key={carpool._id} className={styles.carpoolCard}>
+        <h3>
+          {carpool.origin} to {carpool.destination}
+        </h3>
+        <p>Date: {new Date(carpool.date).toLocaleDateString()}</p>
+        <p>Seats Available: {carpool.seatsAvailable}</p>
+
+        <CarpoolMap
+          lat={carpool.originLat ?? 53.3498}
+          lng={carpool.originLng ?? -6.2603}/>
+      </div>
+    ));
+  }
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+    <main className={styles.main}>
+      <h1>Welcome to the Carpool App</h1>
+      <h2>mongodb test:</h2>
+      <p>{dbStatus}</p>
+
+      <section className={styles.carpoolList}>
+        <h2>Available Carpools:</h2>
+        {renderCarpools()}
+
+      </section>
       </main>
-    </div>
   );
 }

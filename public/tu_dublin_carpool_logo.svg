@@ -1,0 +1,42 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#f0fdff" rx="40"/>
+  
+  <!-- Central connection hub -->
+  <circle cx="100" cy="100" r="12" fill="#4ea8c2"/>
+  
+  <!-- People icons arranged in circle -->
+  <!-- Person 1 (top) -->
+  <g transform="translate(100, 50)">
+    <circle cx="0" cy="0" r="18" fill="#4ea8c2"/>
+    <circle cx="0" cy="-4" r="6" fill="#f0fdff"/>
+    <path d="M -11 18 Q -11 8, 0 8 Q 11 8, 11 18" fill="#f0fdff"/>
+  </g>
+  
+  <!-- Person 2 (right) -->
+  <g transform="translate(150, 100)">
+    <circle cx="0" cy="0" r="18" fill="#4ea8c2"/>
+    <circle cx="0" cy="-4" r="6" fill="#f0fdff"/>
+    <path d="M -11 18 Q -11 8, 0 8 Q 11 8, 11 18" fill="#f0fdff"/>
+  </g>
+  
+  <!-- Person 3 (bottom left) -->
+  <g transform="translate(65, 140)">
+    <circle cx="0" cy="0" r="18" fill="#4ea8c2"/>
+    <circle cx="0" cy="-4" r="6" fill="#f0fdff"/>
+    <path d="M -11 18 Q -11 8, 0 8 Q 11 8, 11 18" fill="#f0fdff"/>
+  </g>
+  
+  <!-- Person 4 (left) -->
+  <g transform="translate(50, 100)">
+    <circle cx="0" cy="0" r="18" fill="#00364d"/>
+    <circle cx="0" cy="-4" r="6" fill="#f0fdff"/>
+    <path d="M -11 18 Q -11 8, 0 8 Q 11 8, 11 18" fill="#f0fdff"/>
+  </g>
+  
+  <!-- Connecting lines -->
+  <line x1="100" y1="68" x2="100" y2="88" stroke="#00364d" stroke-width="3" opacity="0.6"/>
+  <line x1="132" y1="100" x2="112" y2="100" stroke="#00364d" stroke-width="3" opacity="0.6"/>
+  <line x1="77" y1="127" x2="92" y2="108" stroke="#00364d" stroke-width="3" opacity="0.6"/>
+  <line x1="68" y1="100" x2="88" y2="100" stroke="#00364d" stroke-width="3" opacity="0.6"/>
+</svg>

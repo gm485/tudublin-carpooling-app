@@ -1,0 +1,26 @@
+
+.dashboardContainer {
+
+}
+
+
+
+.dashboardHeader {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 14px;
+
+}
+
+.createCarpoolBtn {
+    margin-left: auto;
+}
+
+.cardContainer {
+    padding: 50px;
+    margin: 100px;
+}
+
+
